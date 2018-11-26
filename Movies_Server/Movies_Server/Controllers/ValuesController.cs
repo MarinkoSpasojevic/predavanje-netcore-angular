@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Movies_Server.Interfaces;
 
 namespace Movies_Server.Controllers
 {
@@ -10,11 +11,19 @@ namespace Movies_Server.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IMovieRepository _movieRepo;
+
+        public ValuesController(IMovieRepository movieRepo)
+        {
+            _movieRepo = movieRepo;
+        }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var movies = _movieRepo.GetMovies();
+
+            return Ok(movies);
         }
 
         // GET api/values/5
