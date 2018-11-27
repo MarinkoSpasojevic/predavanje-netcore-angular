@@ -11,7 +11,7 @@ namespace Movies_Server.Interfaces
         List<Movie> GetMovies();
         Movie GetMovieById(Guid id);
         void SaveMovie(Movie movie);
-        void UpdateMovie(Movie movie);
+        void UpdateMovie(Movie dbMovie, Movie movie);
         void DeleteMovie(Movie movie);
     }
 }

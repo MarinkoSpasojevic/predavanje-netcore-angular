@@ -1,4 +1,5 @@
 ﻿using Movies_Server.Context;
+using Movies_Server.Extensions;
 using Movies_Server.Interfaces;
 using Movies_Server.Models;
 using System;
@@ -22,13 +23,15 @@ namespace Movies_Server.DataManager
 
         public void SaveMovie(Movie movie)
         {
+            movie.Id = Guid.NewGuid();
             _context.Add(movie);
             _context.SaveChanges();
         }
 
-        public void UpdateMovie(Movie movie)
+        public void UpdateMovie(Movie dbMovie, Movie movie)
         {
-            _context.Update(movie);
+            dbMovie.Map(movie);
+            _context.Update(dbMovie);
             _context.SaveChanges();
         }
 
