@@ -5,7 +5,8 @@
         [routerLinkActiveOptions]="{exact: true}">Project Home</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="#">Movie Actions</a></li>
+      <li><a [routerLink]="['/movie/list']" routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}">Movie Actions</a></li>
     </ul>
   </div>
 </nav>
