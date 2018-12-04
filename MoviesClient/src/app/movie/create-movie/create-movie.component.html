@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <form [formGroup]="movieForm" autocomplete="off" novalidate (ngSubmit)="createMovie(movieForm.value)">
+    <div class="form-horizontal well">
+
+      <div class="form-group">
+        <label for="name" class="control-label col-md-2">Name of a movie: </label>
+        <div class="col-md-5">
+          <input type="text" formControlName="name" id="name" class="form-control" />
+        </div>
+        <div class="col-md-5">
+          <em *ngIf="isInvalid('name') && hasError('name', 'required')">Name is required</em>
+          <em *ngIf="isInvalid('name') && hasError('name', 'maxlength')">Maximum allowed length is 40 characters.</em>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="genre" class="control-label col-md-2">Genre of a movie: </label>
+        <div class="col-md-5">
+          <input type="text" formControlName="genre" id="genre" class="form-control" />
+        </div>
+        <div class="col-md-5">
+          <em *ngIf="isInvalid('genre') && hasError('genre', 'required')">Genre is required</em>
+          <em *ngIf="isInvalid('genre') && hasError('genre', 'maxlength')">Maximum allowed length is 20 characters.</em>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="director" class="control-label col-md-2">Director of a movie: </label>
+        <div class="col-md-5">
+          <input type="text" formControlName="director" id="director" class="form-control" />
+        </div>
+        <div class="col-md-5">
+          <em *ngIf="isInvalid('director') && hasError('director', 'required')">Director is required</em>
+          <em *ngIf="isInvalid('director') && hasError('director', 'maxlength')">Maximum allowed length is 40
+            characters.</em>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="form-group">
+        <div class="col-md-offset-5 col-md-1">
+          <button type="submit" class="btn btn-info" [disabled]="!movieForm.valid">Save</button>
+        </div>
+        <div class="col-md-1">
+          <button type="button" class="btn btn-danger" (click)="redirectToMovieList()">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

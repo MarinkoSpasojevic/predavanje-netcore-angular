@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/_interfaces/movie.model';
 import { HttpService } from 'src/app/shared/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -10,10 +11,14 @@ import { HttpService } from 'src/app/shared/http.service';
 export class MoviesComponent implements OnInit {
   public movies: Movie[] = [];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.getMovies();
+  }
+
+  public navigateToCreate = () => {
+    this.router.navigate(['/movie/create']);
   }
 
   public getMovies = () => {
