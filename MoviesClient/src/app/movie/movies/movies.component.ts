@@ -32,9 +32,10 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  public redirectToUpdate = (event) => {
-    console.log('Redirecting to update page with id: ', event)
-    //use Router to navigate to required component
+  public redirectToUpdate = (id) => {
+    console.log('Redirecting to update page with id: ', id)
+    let updateUrl: string = `/movie/update/${id}`;
+    this.router.navigate([updateUrl]);
   }
 
   public redirectToDelete = (event) => {
